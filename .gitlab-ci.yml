@@ -23,8 +23,9 @@ numericals:
   script: make numericals.all
   artifacts:
     paths:
-      - numericals/zeroguess
-      - numericals/rampdown
+      - numericals
+    exclude:
+      - **/src
 
 plots:
   stage: process
@@ -34,8 +35,9 @@ plots:
   script: make plots.all
   artifacts:
     paths:
-      - plots/coefficients
-      - plots/optimized
+      - plots/
+    exclude:
+      - **/src
 
 tables:
   stage: process
@@ -45,8 +47,9 @@ tables:
   script: make tables.all
   artifacts:
     paths:
-      - tables/zeroguess.tex
-      - tables/rampdown.tex
+      - tables
+    exclude:
+      - **/src
 
 paper:
   stage: tex
