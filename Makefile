@@ -50,7 +50,7 @@ tables/temperatures.tex: \
 	python3 tables/src/temperatures.py --report=$< > $@
 
 numericals/evo_temp.npy: numericals/src/compute.py
-	python numericals/src/compute.py --outfile=$@
+	python3 numericals/src/compute.py --outfile=$@
 
 numericals/report.json: \
 		numericals/evo_temp.npy \
