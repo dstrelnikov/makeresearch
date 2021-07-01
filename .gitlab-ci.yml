@@ -1,0 +1,70 @@
+stages:
+  - compute
+  - process
+  - tex
+
+variables:
+  DIJITSO_CACHE_DIR: $CI_PROJECT_DIR/.cache/dijitso
+  GIT_STRATEGY: fetch
+
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - .cache/dijitso
+    - numericals
+    - plots
+    - tables
+
+numericals:
+  stage: compute
+  tags:
+    - makeresearch
+  image: makeresearch/solver
+  script: make numericals.all
+  artifacts:
+    paths:
+      - numericals/zeroguess
+      - numericals/rampdown
+
+plots:
+  stage: process
+  tags:
+    - makeresearch
+  image: makeresearch/solver
+  script: make plots.all
+  artifacts:
+    paths:
+      - plots/coefficients
+      - plots/optimized
+
+tables:
+  stage: process
+  tags:
+    - makeresearch
+  image: makeresearch/tabulate
+  script: make tables.all
+  artifacts:
+    paths:
+      - tables/zeroguess.tex
+      - tables/rampdown.tex
+
+paper:
+  stage: tex
+  tags:
+    - makeresearch
+  image: makeresearch/publications
+  script: make paper
+  artifacts:
+    paths:
+      - paper.pdf
+ 
+slides:
+  stage: tex
+  tags:
+    - makeresearch
+  image: makeresearch/publications
+  script: make slides
+  artifacts:
+    paths:
+      - slides.pdf
+ 

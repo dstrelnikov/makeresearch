@@ -1,0 +1,81 @@
+\documentclass[parskip=half]{scrartcl}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+\usepackage[
+	left	= 2.5cm,
+	right	= 2.5cm,
+	top		= 2.5cm,
+	bottom	= 3.0cm,
+	includehead]{geometry}
+
+\usepackage[headsepline,automark]{scrlayer-scrpage}
+\newpairofpagestyles{standardheadings}{
+	\clearpairofpagestyles
+	\ohead{\pagemark}
+	\ihead{\headmark}
+	\KOMAoptions{headsepline=.5pt}
+}
+\pagestyle{standardheadings}
+
+\title{make research}
+% \title{\texttt{\$ make research -j16}}
+\subtitle{an entry level tutorial on writing research papers using\\ GNU Make and CI/CD pipelines}
+\author{Dmytro Strelnikov}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+In this dummy paper the finite elements method is applied to solve a boundary value problem on the cylinder $\Omega \times [0,T]$ where $\Omega = [0,1] \times [0,1]$. The problem consists of the homogeneous heat equation
+
+\begin{equation} \label{eq:heat_eq}
+	\alpha \frac{\partial \theta(x,t)}{\partial t} = \Delta \theta(x,t),
+\end{equation}
+
+with the following Neumann boundary conditions.
+
+\begin{equation} \label{eq:bc}
+	\frac{\partial \theta(x,t)}{\partial \vec{n}} = \left\{
+		\begin{array}{ll}
+			k (\theta(x,t) - \theta_\text{amb}), & \text{on}\ \Gamma_0, \\
+			- u(t) g(x), & \text{on}\ \Gamma_1, \\
+			0, & \text{on}\ \partial\Omega \setminus (\Gamma_0 \cup \Gamma_1).
+		\end{array}
+		\right.
+\end{equation}
+
+Here $\Gamma_0 = [0,1] \times \{0\}$, $\Gamma_1 = [0,1] \times \{1\}$. Functions $g(x_1, 1)$ and $u(t)$ are presented in Figure~\ref{fig:bc}.
+
+\begin{figure} \label{fig:bc}
+	\centering
+	\includegraphics{plots/g.pdf}
+	\includegraphics{plots/control.pdf}
+	\caption{Boundary conditions applied in the paper.}
+\end{figure}
+
+
+\section{Solution}
+
+The solution to the problem at selected time moments is presented in Figure~\ref{fig:solution}.
+
+\begin{figure} \label{fig:solution}
+	\centering
+	\includegraphics{plots/solution.pdf}
+	\caption{Solution to the equation at different time moments.}
+\end{figure}
+
+The corresponding maximal and minimal temperatures are presented in Table~\ref{tab:temperatures}.
+
+\begin{table} \label{tab:temperatures}
+	\centering
+	\input{tables/temperatures.tex}
+	\caption{Maximal and minimal temperatures at different time moments.}
+\end{table}
+
+\end{document}
+ 

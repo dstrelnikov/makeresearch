@@ -1,0 +1,85 @@
+\documentclass[
+	9pt,
+	hyperref = {unicode,pdfpagelabels=false},
+	aspectratio = 43
+	]{beamer}
+\mode<presentation>
+
+\usetheme{metropolis}
+\metroset{
+	titleformat = smallcaps,
+	titleformat title = smallcaps,
+	sectionpage = progressbar,
+	progressbar = foot,
+	block = fill
+}
+
+\usefonttheme{professionalfonts}
+\setsansfont{IBM Plex Sans}
+
+\title{make research}
+% \title{\texttt{\$ make research -j16}}
+\subtitle{an entry level tutorial on writing research papers using\\ GNU Make and CI/CD pipelines}
+
+\author{Dmytro Strelnikov}
+
+\institute{Technische Universität Chemnitz}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{frame}{Let's write a paper}
+	As an example I'm going to write a small paper describing a numerical solution to the heat equation.
+
+	The paper will include:
+	\begin{itemize}
+		\item a plot of the boudary condition
+		\item plots of the solution at different time points
+		\item a table with numerical data about the solution
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What can go wrong?}
+	\textbf{Reproducibility}
+	\begin{itemize}
+		\item an interested reader won't be able to reproduce the result
+		\item in a two months I won't be able to reproduce the result
+		\item in a year I won't be able to even make my code running
+	\end{itemize}
+
+	\textbf{Consistency}
+	\begin{itemize}
+		\item I won't identify an error at the time it appeared
+		\item I will adjust the problem formulation while writing and present inconsistent data in the final paper
+	\end{itemize}
+
+	\textbf{Workflow}
+	\begin{itemize}
+		\item I will run the computations and process the data manually
+	\end{itemize}
+
+	\textbf{Delivery}
+	\begin{itemize}
+		\item I will keep artifacts in the version controlled repository
+		\item the artifacts will get out of sync with their sources
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{How to do it the right way?}
+	Outline the design and let the computer work for you.
+	The tools can be different, however the basic principles remain the same:
+	\begin{itemize}
+		\item understand your project dependencies, represent them as a DAG
+		\item keep a single point of responsibility, don't repeat yourself
+		\item make it fully reproducible, let the paper write itself
+		\item automate the build process and test it after every change
+		\item keep derivatives separate from the original work
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dependency graph}
+	...
+\end{frame}
+
+\end{document}
