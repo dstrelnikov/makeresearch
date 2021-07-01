@@ -6,7 +6,7 @@ SLIDES_PDF = $(SLIDES_TEX:.tex=.pdf)
 
 PLOTS_ALL = plots/g.pdf plots/control.pdf plots/solution.pdf
 TABLES_ALL = tables/temperatures.tex
-NUMERICALS_ALL = numericals/evo_temp.npy
+NUMERICALS_ALL = numericals/evo_temp.npy numericals/report.json
 
 SOLVER = solver/core.py
 ENV = env/problem.py
@@ -60,11 +60,11 @@ numericals/report.json: \
 
 plots.all: $(PLOTS_ALL);
 tables.all: $(TABLES_ALL)
-numericals.all: numericals/evo_temp.npy
+numericals.all: $(NUMERICALS_ALL)
 
 
 clean.all: clean.plots clean.tables clean.numericals
-	rm -rf --interactive=never $(PAPER_PDF) $(SLIDES_PDF)
+	latexmk -C
 clean.plots:
 	rm -rf --interactive=never $(PLOTS_ALL)
 clean.talbes:
