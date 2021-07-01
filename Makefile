@@ -16,6 +16,9 @@ ENV = env/problem.py
 		plots.all tables.all numericals.all \
 		clean.plots clean.tables clean.numericals clean.all
 
+# a dirty hack to make optenv package visible for the python scripts
+# works only if make is called from the project root dir (which is normally the case)
+export PYTHONPATH = :
 
 paper: $(PAPER_PDF);
 
