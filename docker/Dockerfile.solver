@@ -1,5 +1,5 @@
 FROM quay.io/fenicsproject/stable:latest
-RUN python3 -m pip install .
+RUN python3 -m pip install git+https://gitlab.hrz.tu-chemnitz.de/dmst--tu-chemnitz.de/makeresearch
 RUN python3 -m pip install --upgrade matplotlib
 WORKDIR /home/fenics/shared
 CMD ["/bin/bash"]
