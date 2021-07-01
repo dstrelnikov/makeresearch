@@ -1,7 +1,8 @@
 makeresearch
 ============
 
-[![pipeline status](...)](...)
+[![pipeline status](https://gitlab.hrz.tu-chemnitz.de/dmst--tu-chemnitz.de/makeresearch/badges/master/pipeline.svg)](https://gitlab.hrz.tu-chemnitz.de/dmst--tu-chemnitz.de/makeresearch/-/commits/master)
+
 
 Write researh papers using make and CI/CD pipelines.
 
