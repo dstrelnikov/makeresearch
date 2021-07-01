@@ -34,7 +34,7 @@ $(SLIDES_PDF): \
 		$(SLIDES_TEX) \
 		$(PLOTS_ALL) \
 		$(TABLES_ALL)
-	latexmk -pdf -silent $<
+	latexmk -xelatex -silent $<
 
 plots/g.pdf: plots/src/g.py
 	python3 plots/src/g.py --outfile=$@

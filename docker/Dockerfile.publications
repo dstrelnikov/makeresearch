@@ -1,0 +1,6 @@
+FROM mfisherman/texlive-full:latest
+RUN wget https://github.com/IBM/plex/releases/download/v5.1.3/OpenType.zip
+RUN unzip OpenType.zip -d /usr/share/fonts/
+RUN fc-cache -f
+CMD ["/bin/bash"]
+ENTRYPOINT []
