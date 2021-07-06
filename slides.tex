@@ -5,6 +5,10 @@
 	]{beamer}
 \mode<presentation>
 
+\usepackage{tikz-cd}
+\usepackage{listings}
+\usepackage{mdframed}
+
 \usetheme{metropolis}
 \metroset{
 	titleformat = smallcaps,
@@ -78,8 +82,33 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Dependency graph}
-	...
+\begin{frame}[fragile]{Dependency graph}
+	As the first step we identify the artifacts and group them. We describe the dependencies between those groups as a DAG.
+
+	\vspace{1em}
+
+	\begin{tikzcd}[column sep=large]
+		& & \text{plots} \ar[r, "\text{TeX}"] \ar[ddr]& \text{paper} \\
+		\ar[r, "\text{compute}"] & \text{numericals}
+			\ar[dr, "\text{tabulate}", bend right=20]
+			\ar[ur, "\text{plot}", bend left=20] \\
+		& & \text{tables} \ar[r] \ar[uur]& \text{slides} \\
+	\end{tikzcd}
+
+	This graph will serve as a template for the Makefile and the CI/CD pipeline description.
 \end{frame}
+
+\begin{frame}[fragile]{Makefile}
+	GNU Make is a tool which controls the generation of artifacts (executables, pictures, PDF files), i.e. any non-source files of a project.
+
+	Make gets its knowledge of how to build your project from a file called the Makefile, which lists each of the non-source files and how to compute it from other files.
+
+	\begin{figure}
+	\centering
+	\lstinputlisting[language=make, firstline=25, lastline=29, frame=lines, boxpos=c]{Makefile}
+	\caption{The basic entity of the Makefile.}
+	\end{figure}
+\end{frame}
+
 
 \end{document}
