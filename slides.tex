@@ -118,13 +118,69 @@
 		on my machine
 	\end{center}
 
-	\vspace{2em}
+	\vfill
 
 	Perhaps it \textbf{only} works on your machine. There are essentially two ways to solve the problem:
 	\begin{enumerate}
 	 	\item Ship your machine to anyone wanting to run your program.
 	 	\item Make reproducible environments for reproducible builds.
 	\end{enumerate} 
+\end{frame}
+
+\begin{frame}{Containerization for reproducible environments}
+	Containerization (OS-level virtualization) is the packaging of software code with just the operating system (OS) libraries and dependencies required to run the code to create a single lightweight executable (a container) that runs consistently on any infrastructure.
+
+	\vfill
+
+	Random facts about containers:
+	\begin{itemize}
+		\item reproducible
+		\item more portable and resource-efficient then virtual machines
+		\item can be built on top of other containers (OverlayFS)
+		\item make infrastructure reproducible and maintainable
+		\item became the de facto compute units of modern cloud-native applications
+	\end{itemize}
+
+	\vfill
+
+	\textbf{Keywords:} Docker, Podman, Singularity, Open Container Initiative.
+\end{frame}
+
+\begin{frame}{CI/CD \& pipelines}
+
+
+	CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. CI/CD pipeline is a series of steps that must be performed in order to deliver a new version of software.
+
+	\vfill
+
+	\begin{minipage}[t]{.5\linewidth}
+		CI/CD stands for:
+		\begin{itemize}
+		 	\item continuous integration
+		 	\item continuous delivery
+		 	\item continuous deployment
+		 \end{itemize}		
+	\end{minipage}%
+	\begin{minipage}[t]{.5\linewidth}
+		Pipeline stages may include include:
+		\begin{itemize}
+			\item build
+			\item test
+			\item compute
+			\item release
+			\item deploy
+		\end{itemize}
+	\end{minipage}
+
+	\vfill
+
+	\textbf{Keywords:} Jenkins, GitLab CI, CircleCI, Travis CI, Drone.
+\end{frame}
+
+\begin{frame}{The end}
+	\begin{center}
+		\texttt{\$ make discussion}
+	\end{center}
 \end{frame}
 
 \end{document}
