@@ -5,12 +5,12 @@ SLIDES_TEX = slides.tex
 SLIDES_PDF = $(SLIDES_TEX:.tex=.pdf)
 
 PLOTS_ALL = plots/g.pdf plots/control.pdf plots/solution.pdf
+PLOTS_PARAMETERS = plots/src/parameters.py
 TABLES_ALL = tables/temperatures.tex
 NUMERICALS_ALL = numericals/evo_temp.npy numericals/report.json
 
 SOLVER = solver/core.py
-ENV = env/problem.py
-%: $(SOLVER) $(ENV);
+ENV = env/problem.py env/parameters.py
 
 .PHONY: paper slides \
 		plots.all tables.all numericals.all \
@@ -26,15 +26,18 @@ $(PAPER_PDF): \
 		$(PAPER_TEX) \
 		$(PLOTS_ALL) \
 		$(TABLES_ALL)
-	latexmk -pdf -silent $<
+	latexmk -pdf -g -silent $<
 
 slides: $(SLIDES_PDF);
+
+$(PLOTS_ALL): $(PLOTS_PARAMETERS) $(ENV)
+$(NUMERICALS_ALL): $(SOLVER) $(ENV)
 
 $(SLIDES_PDF): \
 		$(SLIDES_TEX) \
 		$(PLOTS_ALL) \
 		$(TABLES_ALL)
-	latexmk -xelatex -silent $<
+	latexmk -xelatex -g -silent $<
 
 plots/g.pdf: plots/src/g.py
 	python3 plots/src/g.py --outfile=$@
@@ -44,6 +47,7 @@ plots/control.pdf: plots/src/control.py
 
 plots/solution.pdf: \
 		numericals/evo_temp.npy \
+		plots/src/parameters.py \
 		plots/src/solution.py
 	python3 plots/src/solution.py --evo=$< --outfile=$@
 
