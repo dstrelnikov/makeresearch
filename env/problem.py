@@ -32,7 +32,7 @@ theta_init = dolfin.project(temp_amb, V)
 
 # define the active boundary condition
 x = sym.symbols('x[0]')
-g_ = sym.poly((x**4 - 2*x**3 + x**2))
+g_ = sym.poly((x**4 - 2*x**3 + 2*x**2))
 g = dolfin.Expression(sym.ccode(g_.as_expr()), degree=g_.degree())
 control = 10**3 * np.sqrt(time_line / T)
 # control = 10**3 * (time_line / T)**2
