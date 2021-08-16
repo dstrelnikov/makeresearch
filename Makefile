@@ -74,7 +74,7 @@ clean.all: clean.plots clean.tables clean.numericals
 	latexmk -C
 clean.plots:
 	rm -rf --interactive=never $(PLOTS_ALL)
-clean.talbes:
+clean.tables:
 	rm -rf --interactive=never $(TABLES_ALL)
 clean.numericals:
 	rm -rf --interactive=never $(NUMERICALS_ALL)
