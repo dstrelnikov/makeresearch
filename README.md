@@ -64,7 +64,7 @@ docker run \
 
 ## GitLab CI/CD artifacts
 
-For the mirror of this repository at TU Chemnitz GitLab the following links are valid:
+For the mirror of this repository at TU Chemnitz GitLab the following links are valid (authorization required):
 
 - `paper.pdf` (latest successful) [view][gitlab-paper-view], [download][gitlab-paper-download]
 - `slides.pdf` (latest successful) [view][gitlab-slides-view], [download][gitlab-slides-download]
